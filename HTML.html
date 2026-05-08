@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aminzon - Shop Online</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f3f3f3; }
+        header { background-color: #232f3e; color: white; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 24px; font-weight: bold; color: #ff9900; }
+        nav select { padding: 5px; border-radius: 5px; }
+        .container { padding: 20px; display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+        .product-card { background: white; border: 1px solid #ddd; width: 250px; padding: 15px; border-radius: 8px; text-align: center; }
+        .product-card img { max-width: 100%; height: 150px; object-fit: contain; }
+        .price { color: #B12704; font-size: 18px; font-weight: bold; margin: 10px 0; }
+        button { background-color: #ffd814; border: none; padding: 10px; border-radius: 20px; cursor: pointer; width: 100%; }
+        button:hover { background-color: #f7ca00; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">Aminzon</div>
+    <nav>
+        <select id="langSwitcher" onchange="changeLanguage()">
+            <option value="en">English</option>
+            <option value="fr">Français</option>
+            <option value="ar">العربية</option>
+        </select>
+    </nav>
+</header>
+
+<div class="container" id="products">
+    <!-- Produit 1 -->
+    <div class="product-card">
+        <img src="https://via.placeholder.com/150" alt="Product">
+        <h3 id="p1-title">Smartphone X</h3>
+        <p id="p1-desc">Fast and reliable smartphone.</p>
+        <div class="price">199.99 $</div>
+        <button id="p1-btn">Add to Cart</button>
+    </div>
+</div>
+
+<script>
+    const translations = {
+        en: { title: "Smartphone X", desc: "Fast and reliable smartphone.", btn: "Add to Cart" },
+        fr: { title: "Smartphone X", desc: "Smartphone rapide et fiable.", btn: "Ajouter au panier" },
+        ar: { title: "هاتف ذكي X", desc: "هاتف سريع وموثوق.", btn: "أضف إلى السلة" }
+    };
+
+    function changeLanguage() {
+        let lang = document.getElementById("langSwitcher").value;
+        document.getElementById("p1-title").innerText = translations[lang].title;
+        document.getElementById("p1-desc").innerText = translations[lang].desc;
+        document.getElementById("p1-btn").innerText = translations[lang].btn;
+        
+        // Change direction for Arabic
+        document.body.style.direction = (lang === 'ar') ? 'rtl' : 'ltr';
+    }
+</script>
+
+</body>
+</html>
